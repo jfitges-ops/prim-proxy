@@ -22,7 +22,7 @@ app.get("/stop-monitoring", async (req, res) => {
     return res.status(400).json({ error: "stopId et apiKey requis" });
   }
 
-  const url = `${PRIM_BASE}/stop-monitoring?MonitoringRef=${encodeURIComponent(stopId)}&MaximumStopVisits=${max}`;
+  const url = `${PRIM_BASE}/stop-monitoring?MonitoringRef=${stopId}&MaximumStopVisits=${max}`;
   console.log("Appel PRIM:", url);
 
   try {
@@ -44,7 +44,7 @@ app.get("/vehicle-monitoring", async (req, res) => {
     return res.status(400).json({ error: "lineId et apiKey requis" });
   }
 
-  const url = `${PRIM_BASE}/vehicle-monitoring?LineRef=${encodeURIComponent(lineId)}`;
+  const url = `${PRIM_BASE}/vehicle-monitoring?LineRef=${lineId}`;
 
   try {
     const upstream = await fetch(url, {
