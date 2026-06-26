@@ -23,10 +23,11 @@ app.get("/stop-monitoring", async (req, res) => {
   }
 
   const url = `${PRIM_BASE}/stop-monitoring?MonitoringRef=${encodeURIComponent(stopId)}&MaximumStopVisits=${max}`;
+  console.log("Appel PRIM:", url);
 
   try {
     const upstream = await fetch(url, {
-      headers: { apiKey, Accept: "application/json" },
+      headers: { "apiKey": apiKey, "Accept": "application/json" },
     });
     const data = await upstream.json();
     res.json(data);
